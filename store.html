@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donut SMP | Red & White — Premium Mod Store</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --red: #ff3333;
+            --red-dark: #cc0000;
+            --red-glow: #ff5555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('back.png');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.78) 0%, rgba(20,5,5,0.88) 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        #particle-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.68;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 3;
+            max-width: 1340px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 26px 0;
+            backdrop-filter: blur(18px);
+            background: rgba(25, 8, 8, 0.72);
+            border-bottom: 1px solid rgba(255, 60, 60, 0.35);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-icon {
+            width: 58px;
+            height: 58px;
+            background: linear-gradient(145deg, #ff4444, #aa0000);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 0 28px rgba(255, 60, 60, 0.65);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .logo-icon:hover {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        .logo-text h1 {
+            font-size: 2.15rem;
+            font-weight: 900;
+            letter-spacing: -1.2px;
+            background: linear-gradient(90deg, #ffffff, #ffaaaa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 38px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #ffe0e0;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .discord-btn {
+            background: rgba(255, 60, 60, 0.18);
+            border: 2px solid var(--red);
+            padding: 11px 26px;
+            border-radius: 50px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .discord-btn:hover {
+            background: var(--red);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(255, 60, 60, 0.55);
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 70px;
+            padding: 90px 0 110px;
+        }
+
+        .hero-left {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 60, 60, 0.22);
+            border: 1px solid rgba(255, 80, 80, 0.7);
+            padding: 9px 22px;
+            border-radius: 50px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: #ffbbbb;
+            margin-bottom: 26px;
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 1; }
+        }
+
+        .hero-left h2 {
+            font-size: 3.85rem;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2.2px;
+            margin-bottom: 26px;
+        }
+
+        .red-accent {
+            color: #ff6666;
+            text-shadow: 0 0 25px rgba(255, 60, 60, 0.75);
+        }
+
+        .hero-left p {
+            font-size: 1.2rem;
+            color: #ffd0d0;
+            max-width: 540px;
+            line-height: 1.65;
+            margin-bottom: 42px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 52px;
+            margin-bottom: 45px;
+        }
+
+        .stat-number {
+            font-size: 2.7rem;
+            font-weight: 800;
+            color: #ff6666;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffaaaa;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #ff4444, #dd2222);
+            padding: 17px 38px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.08rem;
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 12px 35px rgba(255, 60, 60, 0.55);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-7px) scale(1.04);
+            box-shadow: 0 22px 45px rgba(255, 60, 60, 0.7);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ff6666;
+            padding: 17px 34px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #ffdddd;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 60, 60, 0.2);
+            border-color: white;
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        /* GIF Frame */
+        .gif-frame {
+            flex: 1;
+            max-width: 540px;
+            background: rgba(30, 10, 10, 0.9);
+            border-radius: 38px;
+            padding: 16px;
+            border: 2px solid rgba(255, 80, 80, 0.65);
+            box-shadow: 0 30px 70px -15px rgba(255, 60, 60, 0.5);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .gif-frame:hover {
+            transform: scale(1.05) translateY(-12px);
+        }
+
+        .gif-frame img {
+            width: 100%;
+            border-radius: 26px;
+            transition: transform 0.6s ease;
+        }
+
+        .gif-frame:hover img {
+            transform: scale(1.04);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 2.85rem;
+            font-weight: 800;
+            text-align: center;
+            margin: 90px 0 18px;
+            background: linear-gradient(90deg, #ffffff, #ff9999);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Mod Cards */
+        .mods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 34px;
+            margin: 50px 0 90px;
+        }
+
+        .mod-card {
+            background: rgba(35, 12, 12, 0.82);
+            backdrop-filter: blur(14px);
+            border-radius: 34px;
+            padding: 36px 30px;
+            border: 1px solid rgba(170, 60, 60, 0.65);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mod-card:hover {
+            transform: translateY(-16px) scale(1.03);
+            border-color: #ff6666;
+            box-shadow: 0 35px 70px -15px rgba(255, 60, 60, 0.55);
+        }
+
+        .mod-icon {
+            font-size: 3.4rem;
+            margin-bottom: 22px;
+            color: #ff7777;
+            transition: all 0.4s ease;
+        }
+
+        .mod-card:hover .mod-icon {
+            transform: scale(1.25) rotate(12deg);
+        }
+
+        .download-btn {
+            margin-top: 24px;
+            background: rgba(255, 60, 60, 0.18);
+            border: 2px solid #ff5555;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            width: 100%;
+        }
+
+        .download-btn:hover {
+            background: #ff3333;
+            border-color: white;
+            transform: scale(1.06);
+        }
+
+        /* Upgraded Install Section */
+        .install-section {
+            background: rgba(28, 9, 9, 0.94);
+            backdrop-filter: blur(18px);
+            border-radius: 42px;
+            padding: 72px 52px;
+            margin: 90px 0 100px;
+            border: 1px solid rgba(255, 80, 80, 0.45);
+            box-shadow: 0 30px 80px -20px rgba(255, 60, 60, 0.45);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .step-card {
+            background: rgba(45, 15, 15, 0.78);
+            border: 1px solid rgba(170, 60, 60, 0.65);
+            border-radius: 28px;
+            padding: 34px 28px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .step-card:hover {
+            transform: translateY(-14px);
+            border-color: #ff6666;
+            box-shadow: 0 28px 60px -15px rgba(255, 60, 60, 0.5);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(145deg, #ff4444, #cc1111);
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px rgba(255, 60, 60, 0.55);
+        }
+
+        .step-card h4 {
+            font-size: 1.38rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .step-card p {
+            color: #ffdddd;
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
+
+        .step-card code {
+            background: #3a1010;
+            padding: 3px 9px;
+            border-radius: 6px;
+            font-family: monospace;
+            color: #ffaaaa;
+        }
+
+        .step-link {
+            color: #ff8888;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 12px;
+            display: inline-block;
+        }
+
+        .step-link:hover {
+            color: white;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(90deg, #ff3333, #cc0000);
+            color: white;
+            padding: 16px 34px;
+            border-radius: 60px;
+            box-shadow: 0 12px 35px rgba(255, 60, 60, 0.65);
+            font-weight: 600;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: toastIn 0.4s ease forwards;
+        }
+
+        @keyframes toastIn {
+            from { transform: translateY(80px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 0 40px;
+            border-top: 1px solid rgba(170, 60, 60, 0.4);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .copyright {
+            color: #ffaaaa;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 860px) {
+            .hero-left h2 { font-size: 2.8rem; }
+            .hero { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<div class="container">
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo-area">
+            <div class="logo-icon">🍩</div>
+            <div class="logo-text">
+                <h1>Donut SMP</h1>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#mods">Mods</a>
+            <a href="#install">Install</a>
+            <div class="discord-btn" id="discordButton">
+                <i class="fab fa-discord"></i> Discord
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-left">
+            <div class="badge">
+                <i class="fas fa-fire"></i> CRIMSON UPDATE • @ysnix4
+            </div>
+            <h2>Level Up Your <span class="red-accent">Minecraft Game</span></h2>
+            <p>Premium mod collection curated for Donut SMP. Get the best clients and utilities for immersive visuals, smooth performance, and competitive edge.</p>
+            
+            <div class="stats">
+                <div><span class="stat-number">8+</span><div class="stat-label">Premium Mods</div></div>
+                <div><span class="stat-number">15k+</span><div class="stat-label">Active Players</div></div>
+                <div><span class="stat-number">100%</span><div class="stat-label">Safe & Verified</div></div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-primary" id="mainDownloadBtn">
+                    <i class="fas fa-download"></i> Get Mods Now
+                </button>
+                <button class="btn-outline" onclick="scrollToInstall()">
+                    <i class="fas fa-cog"></i> How to Install
+                </button>
+            </div>
+        </div>
+
+        <div class="gif-frame">
+            <img id="heroGif" src="hvc.gif" alt="Donut SMP Preview" 
+                 onerror="this.src='https://via.placeholder.com/540x360/330000/ff6666?text=Donut+SMP+Preview'">
+        </div>
+    </div>
+
+    <!-- Mods Section -->
+    <div id="mods">
+        <div class="section-title">⚡ Choose Your Arsenal ⚡</div>
+        <div style="text-align:center; color:#ffbbbb; margin-bottom:50px;">
+            All mods are Fabric 1.21 compatible • Verified and safe to use
+        </div>
+    </div>
+
+    <div class="mods-grid">
+        <div class="mod-card">
+            <div class="mod-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Soon Client</h3>
+            <p>Powerful open-source PvP client with advanced combat, movement, and rendering features.</p>
+            <div class="download-btn" onclick="simulateDownload('Soon Client')">
+                <i class="fas fa-download"></i> Download .jar
+            </div>
+        </div>
+
+        <div class="mod-card">
+            <div class="mod-icon"><i class="fas fa-tachometer-alt"></i></div>
+            <h3>Krypton Client</h3>
+            <p>Lightweight performance mod focused on maximum FPS and stability.</p>
+            <div class="download-btn" onclick="simulateDownload('Krypton Client')">
+                <i class="fas fa-download"></i> Download .jar
+            </div>
+        </div>
+
+        <div class="mod-card">
+            <div class="mod-icon"><i class="fas fa-eye-slash"></i></div>
+            <h3>VAPE V4</h3>
+            <p>Premium ghost client with smooth aim assist and undetectable features.</p>
+            <div class="download-btn" onclick="simulateDownload('VAPE V4')">
+                <i class="fas fa-download"></i> Download .jar
+            </div>
+        </div>
+    </div>
+
+    <!-- Install Section -->
+    <div id="install">
+        <div class="install-section">
+            <div style="text-align: center; margin-bottom: 55px;">
+                <h2 style="font-size: 2.7rem; font-weight: 800; margin-bottom: 14px;
+                           background: linear-gradient(90deg, #ffffff, #ffaaaa);
+                           -webkit-background-clip: text; background-clip: text; color: transparent;">
+                    How to Install Mods
+                </h2>
+                <p style="color: #ffcccc; font-size: 1.15rem;">
+                    Follow these steps to get started with Fabric and enjoy Donut SMP
+                </p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h4>Fabric Loader</h4>
+                    <p>Download and install Fabric Loader for <strong>Minecraft 1.21</strong> from the official website.</p>
+                    <a href="https://fabricmc.net/" target="_blank" class="step-link">Visit Fabric Website →</a>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h4>Fabric API</h4>
+                    <p>Download Fabric API and place it in your <code>mods</code> folder.</p>
+                    <a href="https://modrinth.com/mod/fabric-api" target="_blank" class="step-link">Get Fabric API →</a>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h4>Open .minecraft</h4>
+                    <p>Press <strong>Win + R</strong>, type <code>%appdata%\.minecraft</code> and locate the <strong>mods</strong> folder.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">04</div>
+                    <h4>Drop .jar files</h4>
+                    <p>Put all downloaded mod <strong>.jar</strong> files into the <strong>mods</strong> folder.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">05</div>
+                    <h4>Launch & Play</h4>
+                    <p>Start Minecraft with the <strong>Fabric 1.21</strong> profile and enjoy Donut SMP!</p>
+                </div>
+            </div>
+
+            <!-- Discord Support -->
+            <div style="text-align: center; margin-top: 65px; padding-top: 40px; border-top: 1px dashed rgba(255,80,80,0.3);">
+                <p style="color: #ffbbbb; font-size: 1.08rem; margin-bottom: 22px;">
+                    <i class="fab fa-discord" style="color:#ff6666;"></i> Need help with installation?
+                </p>
+                <button onclick="openDiscord()" class="discord-btn" style="font-size:1.12rem; padding:17px 50px;">
+                    <i class="fab fa-discord"></i> Join Donut SMP Discord
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="logo-area" style="gap:10px;">
+            <div class="logo-icon" style="width:42px; height:42px; font-size:24px;">🍩</div>
+            <span style="font-weight:700;">Donut SMP</span>
+        </div>
+        <div class="copyright">
+            © 2026 Donut SMP. All rights reserved. Use responsibly.
+        </div>
+    </div>
+</div>
+
+<script>
+// Enhanced Particle System
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let width, height, particles = [];
+
+function resizeCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+}
+
+class Particle {
+    constructor() {
+        this.reset();
+    }
+    reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 3.2 + 1.1;
+        this.speedX = (Math.random() - 0.5) * 0.9;
+        this.speedY = (Math.random() - 0.5) * 0.7;
+        this.opacity = Math.random() * 0.55 + 0.35;
+    }
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.opacity -= 0.0015;
+
+        if (this.x < 0 || this.x > width || this.y < 0 || this.y > height || this.opacity <= 0.15) {
+            this.reset();
+        }
+    }
+    draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = '#ff6666';
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = '#ff4444';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+}
+
+function initParticles() {
+    particles = [];
+    const count = Math.floor(Math.min(200, (width * height) / 5500));
+    for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+    }
+}
+
+function animateParticles() {
+    ctx.fillStyle = 'rgba(10, 3, 3, 0.15)';
+    ctx.fillRect(0, 0, width, height);
+    
+    for (let p of particles) {
+        p.update();
+        p.draw();
+    }
+    requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener('resize', () => {
+    resizeCanvas();
+    initParticles();
+});
+
+resizeCanvas();
+initParticles();
+animateParticles();
+
+// Simulate Download Toast
+function simulateDownload(modName) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `🔥 ${modName} — Download started`;
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.transition = 'all 0.4s ease';
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(40px)';
+        setTimeout(() => toast.remove(), 500);
+    }, 3200);
+}
+
+// Scroll to Install
+function scrollToInstall() {
+    document.getElementById('install').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Open Discord
+function openDiscord() {
+    window.open('https://discord.gg/SUKFS86tZd', '_blank');
+}
+
+// Event Listeners
+document.getElementById('mainDownloadBtn').addEventListener('click', () => {
+    simulateDownload('Donut SMP Mod Collection');
+});
+
+document.getElementById('discordButton').addEventListener('click', openDiscord);
+
+// GIF Error Handling
+const heroGif = document.getElementById('heroGif');
+heroGif.onerror = function() {
+    this.src = "https://via.placeholder.com/540x360/330000/ff6666?text=Donut+SMP+Preview";
+};
+
+console.log("%cDonut SMP Red & White Theme Loaded Successfully 🔥", "color:#ff6666; font-weight:bold");
+</script>
+</body>
+</html>
