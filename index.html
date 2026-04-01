@@ -319,7 +319,7 @@
             color: transparent;
         }
 
-        /* Mod Cards */
+        /* Mod Cards with Images */
         .mods-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -336,6 +336,7 @@
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         .mod-card:hover {
@@ -344,19 +345,36 @@
             box-shadow: 0 35px 70px -15px rgba(51, 153, 255, 0.55);
         }
 
-        .mod-icon {
-            font-size: 3.4rem;
+        .mod-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 20px;
             margin-bottom: 22px;
-            color: #66ccff;
             transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
 
-        .mod-card:hover .mod-icon {
-            transform: scale(1.25) rotate(12deg);
+        .mod-card:hover .mod-image {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(51, 153, 255, 0.4);
+        }
+
+        .mod-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: white;
+        }
+
+        .mod-card p {
+            color: #d0e8ff;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
         }
 
         .download-btn {
-            margin-top: 24px;
             background: rgba(51, 153, 255, 0.18);
             border: 2px solid #66ccff;
             color: white;
@@ -366,6 +384,10 @@
             cursor: pointer;
             transition: all 0.4s ease;
             width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
 
         .download-btn:hover {
@@ -494,6 +516,7 @@
         @media (max-width: 860px) {
             .hero-left h2 { font-size: 2.8rem; }
             .hero { padding: 60px 0; }
+            .mod-image { height: 150px; }
         }
     </style>
 </head>
@@ -551,7 +574,7 @@
         </div>
     </div>
 
-    <!-- Mods Section -->
+    <!-- Mods Section with Local Images -->
     <div id="mods">
         <div class="section-title">⚡ Choose Your Arsenal ⚡</div>
         <div style="text-align:center; color:#aaccff; margin-bottom:50px;">
@@ -560,28 +583,31 @@
     </div>
 
     <div class="mods-grid">
+        <!-- Meter Client with rad.png -->
         <div class="mod-card">
-            <div class="mod-icon"><i class="fas fa-chart-line"></i></div>
-            <h3>Meter Client</h3>
-            <p>Powerful open-source utility mod with advanced combat, movement, and rendering features. Perfect for competitive PvP.</p>
+            <img class="mod-image" src="rad.png" alt="Radium Client" onerror="this.src='https://via.placeholder.com/400x180/1a3a5a/66ccff?text=Meter+Client'">
+            <h3>Radium Client</h3>
+            <p>Powerful open-source utility mod with advanced combat, movement, and rendering features. Perfect for competitive PvP and anarchy servers.</p>
             <div class="download-btn" onclick="simulateDownload('Meter Client')">
                 <i class="fas fa-download"></i> Download .jar
             </div>
         </div>
 
+        <!-- Krypton Client with krypto.png -->
         <div class="mod-card">
-            <div class="mod-icon"><i class="fas fa-tachometer-alt"></i></div>
+            <img class="mod-image" src="krypto.png" alt="Krypton Client" onerror="this.src='https://via.placeholder.com/400x180/1a3a5a/66ccff?text=Krypton+Client'">
             <h3>Krypton Client</h3>
-            <p>Lightweight performance mod focused on maximum FPS, stability, and smooth gameplay.</p>
+            <p>Lightweight performance mod focused on maximum FPS, stability, and smooth gameplay. Features dynamic render distance and memory optimization.</p>
             <div class="download-btn" onclick="simulateDownload('Krypton Client')">
                 <i class="fas fa-download"></i> Download .jar
             </div>
         </div>
 
+        <!-- VAPE V4 with vape.png -->
         <div class="mod-card">
-            <div class="mod-icon"><i class="fas fa-eye-slash"></i></div>
+            <img class="mod-image" src="vape.png" alt="VAPE V4" onerror="this.src='https://via.placeholder.com/400x180/1a3a5a/66ccff?text=VAPE+V4'">
             <h3>VAPE V4</h3>
-            <p>Premium ghost client with smooth aim assistance and undetectable visual enhancements.</p>
+            <p>Premium ghost client with smooth aim assistance and undetectable visual enhancements. Ideal for players seeking a competitive edge.</p>
             <div class="download-btn" onclick="simulateDownload('VAPE V4')">
                 <i class="fas fa-download"></i> Download .jar
             </div>
@@ -773,7 +799,16 @@ heroGif.onerror = function() {
     this.src = "https://via.placeholder.com/540x360/002244/66ccff?text=Donut+SMP+Preview";
 };
 
+// Image error handling for mod images
+document.querySelectorAll('.mod-image').forEach(img => {
+    img.onerror = function() {
+        console.warn(`Image not found: ${this.src}`);
+        this.src = `https://via.placeholder.com/400x180/1a3a5a/66ccff?text=${this.alt || 'Mod Image'}`;
+    };
+});
+
 console.log("%cDonut SMP Blue & White Theme Loaded Successfully 💙", "color:#66ccff; font-weight:bold");
+console.log("%cMod images: rad.png, krypto.png, vape.png should be in the same folder", "color:#88ccff");
 </script>
 </body>
 </html>
