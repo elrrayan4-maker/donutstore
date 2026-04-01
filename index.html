@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donut SMP | Red & White — Premium Mod Store</title>
+    <title>Donut SMP | Blue & White — Premium Mod Store</title>
     
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
@@ -11,9 +11,11 @@
     
     <style>
         :root {
-            --red: #ff3333;
-            --red-dark: #cc0000;
-            --red-glow: #ff5555;
+            --blue: #3399ff;
+            --blue-dark: #0066cc;
+            --blue-glow: #66ccff;
+            --white: #ffffff;
+            --light-blue: #e6f3ff;
         }
 
         * {
@@ -37,7 +39,7 @@
             content: "";
             position: fixed;
             inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.78) 0%, rgba(20,5,5,0.88) 100%);
+            background: linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(10,20,40,0.85) 100%);
             z-index: 0;
             pointer-events: none;
         }
@@ -67,8 +69,8 @@
             align-items: center;
             padding: 26px 0;
             backdrop-filter: blur(18px);
-            background: rgba(25, 8, 8, 0.72);
-            border-bottom: 1px solid rgba(255, 60, 60, 0.35);
+            background: rgba(10, 20, 40, 0.72);
+            border-bottom: 1px solid rgba(51, 153, 255, 0.35);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -83,13 +85,13 @@
         .logo-icon {
             width: 58px;
             height: 58px;
-            background: linear-gradient(145deg, #ff4444, #aa0000);
+            background: linear-gradient(145deg, #3399ff, #0066cc);
             border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 32px;
-            box-shadow: 0 0 28px rgba(255, 60, 60, 0.65);
+            box-shadow: 0 0 28px rgba(51, 153, 255, 0.65);
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
@@ -101,7 +103,7 @@
             font-size: 2.15rem;
             font-weight: 900;
             letter-spacing: -1.2px;
-            background: linear-gradient(90deg, #ffffff, #ffaaaa);
+            background: linear-gradient(90deg, #ffffff, #99ccff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -114,7 +116,7 @@
         }
 
         .nav-links a {
-            color: #ffe0e0;
+            color: #e0f0ff;
             text-decoration: none;
             font-weight: 500;
             position: relative;
@@ -128,7 +130,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--red);
+            background: var(--blue);
             transition: width 0.3s ease;
         }
 
@@ -141,8 +143,8 @@
         }
 
         .discord-btn {
-            background: rgba(255, 60, 60, 0.18);
-            border: 2px solid var(--red);
+            background: rgba(51, 153, 255, 0.18);
+            border: 2px solid var(--blue);
             padding: 11px 26px;
             border-radius: 50px;
             font-weight: 700;
@@ -155,9 +157,9 @@
         }
 
         .discord-btn:hover {
-            background: var(--red);
+            background: var(--blue);
             transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(255, 60, 60, 0.55);
+            box-shadow: 0 12px 30px rgba(51, 153, 255, 0.55);
         }
 
         /* Hero */
@@ -178,13 +180,13 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255, 60, 60, 0.22);
-            border: 1px solid rgba(255, 80, 80, 0.7);
+            background: rgba(51, 153, 255, 0.22);
+            border: 1px solid rgba(51, 153, 255, 0.7);
             padding: 9px 22px;
             border-radius: 50px;
             font-size: 0.84rem;
             font-weight: 600;
-            color: #ffbbbb;
+            color: #bbddff;
             margin-bottom: 26px;
             animation: pulse 3s infinite ease-in-out;
         }
@@ -202,14 +204,14 @@
             margin-bottom: 26px;
         }
 
-        .red-accent {
-            color: #ff6666;
-            text-shadow: 0 0 25px rgba(255, 60, 60, 0.75);
+        .blue-accent {
+            color: #66ccff;
+            text-shadow: 0 0 25px rgba(51, 153, 255, 0.75);
         }
 
         .hero-left p {
             font-size: 1.2rem;
-            color: #ffd0d0;
+            color: #d0e8ff;
             max-width: 540px;
             line-height: 1.65;
             margin-bottom: 42px;
@@ -224,14 +226,14 @@
         .stat-number {
             font-size: 2.7rem;
             font-weight: 800;
-            color: #ff6666;
+            color: #66ccff;
         }
 
         .stat-label {
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #ffaaaa;
+            color: #aaccff;
         }
 
         .btn-group {
@@ -241,7 +243,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(90deg, #ff4444, #dd2222);
+            background: linear-gradient(90deg, #3399ff, #0066cc);
             padding: 17px 38px;
             border-radius: 60px;
             font-weight: 700;
@@ -249,7 +251,7 @@
             color: white;
             border: none;
             cursor: pointer;
-            box-shadow: 0 12px 35px rgba(255, 60, 60, 0.55);
+            box-shadow: 0 12px 35px rgba(51, 153, 255, 0.55);
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             display: inline-flex;
             align-items: center;
@@ -258,22 +260,22 @@
 
         .btn-primary:hover {
             transform: translateY(-7px) scale(1.04);
-            box-shadow: 0 22px 45px rgba(255, 60, 60, 0.7);
+            box-shadow: 0 22px 45px rgba(51, 153, 255, 0.7);
         }
 
         .btn-outline {
             background: transparent;
-            border: 2px solid #ff6666;
+            border: 2px solid #66ccff;
             padding: 17px 34px;
             border-radius: 60px;
             font-weight: 600;
-            color: #ffdddd;
+            color: #ddf0ff;
             cursor: pointer;
             transition: all 0.4s ease;
         }
 
         .btn-outline:hover {
-            background: rgba(255, 60, 60, 0.2);
+            background: rgba(51, 153, 255, 0.2);
             border-color: white;
             color: white;
             transform: translateY(-4px);
@@ -283,11 +285,11 @@
         .gif-frame {
             flex: 1;
             max-width: 540px;
-            background: rgba(30, 10, 10, 0.9);
+            background: rgba(10, 30, 50, 0.9);
             border-radius: 38px;
             padding: 16px;
-            border: 2px solid rgba(255, 80, 80, 0.65);
-            box-shadow: 0 30px 70px -15px rgba(255, 60, 60, 0.5);
+            border: 2px solid rgba(51, 153, 255, 0.65);
+            box-shadow: 0 30px 70px -15px rgba(51, 153, 255, 0.5);
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
@@ -311,7 +313,7 @@
             font-weight: 800;
             text-align: center;
             margin: 90px 0 18px;
-            background: linear-gradient(90deg, #ffffff, #ff9999);
+            background: linear-gradient(90deg, #ffffff, #99ccff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -326,11 +328,11 @@
         }
 
         .mod-card {
-            background: rgba(35, 12, 12, 0.82);
+            background: rgba(10, 30, 50, 0.82);
             backdrop-filter: blur(14px);
             border-radius: 34px;
             padding: 36px 30px;
-            border: 1px solid rgba(170, 60, 60, 0.65);
+            border: 1px solid rgba(51, 153, 255, 0.5);
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
             overflow: hidden;
@@ -338,14 +340,14 @@
 
         .mod-card:hover {
             transform: translateY(-16px) scale(1.03);
-            border-color: #ff6666;
-            box-shadow: 0 35px 70px -15px rgba(255, 60, 60, 0.55);
+            border-color: #66ccff;
+            box-shadow: 0 35px 70px -15px rgba(51, 153, 255, 0.55);
         }
 
         .mod-icon {
             font-size: 3.4rem;
             margin-bottom: 22px;
-            color: #ff7777;
+            color: #66ccff;
             transition: all 0.4s ease;
         }
 
@@ -355,8 +357,8 @@
 
         .download-btn {
             margin-top: 24px;
-            background: rgba(255, 60, 60, 0.18);
-            border: 2px solid #ff5555;
+            background: rgba(51, 153, 255, 0.18);
+            border: 2px solid #66ccff;
             color: white;
             padding: 14px 32px;
             border-radius: 50px;
@@ -367,20 +369,20 @@
         }
 
         .download-btn:hover {
-            background: #ff3333;
+            background: #3399ff;
             border-color: white;
             transform: scale(1.06);
         }
 
         /* Upgraded Install Section */
         .install-section {
-            background: rgba(28, 9, 9, 0.94);
+            background: rgba(10, 30, 55, 0.94);
             backdrop-filter: blur(18px);
             border-radius: 42px;
             padding: 72px 52px;
             margin: 90px 0 100px;
-            border: 1px solid rgba(255, 80, 80, 0.45);
-            box-shadow: 0 30px 80px -20px rgba(255, 60, 60, 0.45);
+            border: 1px solid rgba(51, 153, 255, 0.45);
+            box-shadow: 0 30px 80px -20px rgba(51, 153, 255, 0.45);
         }
 
         .steps-grid {
@@ -390,8 +392,8 @@
         }
 
         .step-card {
-            background: rgba(45, 15, 15, 0.78);
-            border: 1px solid rgba(170, 60, 60, 0.65);
+            background: rgba(20, 40, 65, 0.78);
+            border: 1px solid rgba(51, 153, 255, 0.5);
             border-radius: 28px;
             padding: 34px 28px;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -399,14 +401,14 @@
 
         .step-card:hover {
             transform: translateY(-14px);
-            border-color: #ff6666;
-            box-shadow: 0 28px 60px -15px rgba(255, 60, 60, 0.5);
+            border-color: #66ccff;
+            box-shadow: 0 28px 60px -15px rgba(51, 153, 255, 0.5);
         }
 
         .step-number {
             width: 60px;
             height: 60px;
-            background: linear-gradient(145deg, #ff4444, #cc1111);
+            background: linear-gradient(145deg, #3399ff, #0066cc);
             color: white;
             font-size: 1.6rem;
             font-weight: 800;
@@ -415,7 +417,7 @@
             justify-content: center;
             border-radius: 50%;
             margin-bottom: 24px;
-            box-shadow: 0 10px 25px rgba(255, 60, 60, 0.55);
+            box-shadow: 0 10px 25px rgba(51, 153, 255, 0.55);
         }
 
         .step-card h4 {
@@ -425,21 +427,21 @@
         }
 
         .step-card p {
-            color: #ffdddd;
+            color: #d0e8ff;
             line-height: 1.6;
             font-size: 0.98rem;
         }
 
         .step-card code {
-            background: #3a1010;
+            background: #1a3a5a;
             padding: 3px 9px;
             border-radius: 6px;
             font-family: monospace;
-            color: #ffaaaa;
+            color: #aaccff;
         }
 
         .step-link {
-            color: #ff8888;
+            color: #88ccff;
             text-decoration: none;
             font-weight: 600;
             margin-top: 12px;
@@ -455,11 +457,11 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: linear-gradient(90deg, #ff3333, #cc0000);
+            background: linear-gradient(90deg, #3399ff, #0066cc);
             color: white;
             padding: 16px 34px;
             border-radius: 60px;
-            box-shadow: 0 12px 35px rgba(255, 60, 60, 0.65);
+            box-shadow: 0 12px 35px rgba(51, 153, 255, 0.65);
             font-weight: 600;
             z-index: 9999;
             display: flex;
@@ -476,7 +478,7 @@
         /* Footer */
         .footer {
             padding: 60px 0 40px;
-            border-top: 1px solid rgba(170, 60, 60, 0.4);
+            border-top: 1px solid rgba(51, 153, 255, 0.4);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -485,7 +487,7 @@
         }
 
         .copyright {
-            color: #ffaaaa;
+            color: #aaccff;
             font-size: 0.85rem;
         }
 
@@ -522,9 +524,9 @@
     <div class="hero">
         <div class="hero-left">
             <div class="badge">
-                <i class="fas fa-fire"></i> CRIMSON UPDATE • @ysnix4
+                <i class="fas fa-bolt"></i> BLUE EDITION • PREMIUM UPDATE
             </div>
-            <h2>Level Up Your <span class="red-accent">Minecraft Game</span></h2>
+            <h2>Level Up Your <span class="blue-accent">Minecraft Game</span></h2>
             <p>Premium mod collection curated for Donut SMP. Get the best clients and utilities for immersive visuals, smooth performance, and competitive edge.</p>
             
             <div class="stats">
@@ -545,14 +547,14 @@
 
         <div class="gif-frame">
             <img id="heroGif" src="hvc.gif" alt="Donut SMP Preview" 
-                 onerror="this.src='https://via.placeholder.com/540x360/330000/ff6666?text=Donut+SMP+Preview'">
+                 onerror="this.src='https://via.placeholder.com/540x360/002244/66ccff?text=Donut+SMP+Preview'">
         </div>
     </div>
 
     <!-- Mods Section -->
     <div id="mods">
         <div class="section-title">⚡ Choose Your Arsenal ⚡</div>
-        <div style="text-align:center; color:#ffbbbb; margin-bottom:50px;">
+        <div style="text-align:center; color:#aaccff; margin-bottom:50px;">
             All mods are Fabric 1.21 compatible • Verified and safe to use
         </div>
     </div>
@@ -560,9 +562,9 @@
     <div class="mods-grid">
         <div class="mod-card">
             <div class="mod-icon"><i class="fas fa-chart-line"></i></div>
-            <h3>Soon Client</h3>
-            <p>Powerful open-source PvP client with advanced combat, movement, and rendering features.</p>
-            <div class="download-btn" onclick="simulateDownload('Soon Client')">
+            <h3>Meter Client</h3>
+            <p>Powerful open-source utility mod with advanced combat, movement, and rendering features. Perfect for competitive PvP.</p>
+            <div class="download-btn" onclick="simulateDownload('Meter Client')">
                 <i class="fas fa-download"></i> Download .jar
             </div>
         </div>
@@ -570,7 +572,7 @@
         <div class="mod-card">
             <div class="mod-icon"><i class="fas fa-tachometer-alt"></i></div>
             <h3>Krypton Client</h3>
-            <p>Lightweight performance mod focused on maximum FPS and stability.</p>
+            <p>Lightweight performance mod focused on maximum FPS, stability, and smooth gameplay.</p>
             <div class="download-btn" onclick="simulateDownload('Krypton Client')">
                 <i class="fas fa-download"></i> Download .jar
             </div>
@@ -579,7 +581,7 @@
         <div class="mod-card">
             <div class="mod-icon"><i class="fas fa-eye-slash"></i></div>
             <h3>VAPE V4</h3>
-            <p>Premium ghost client with smooth aim assist and undetectable features.</p>
+            <p>Premium ghost client with smooth aim assistance and undetectable visual enhancements.</p>
             <div class="download-btn" onclick="simulateDownload('VAPE V4')">
                 <i class="fas fa-download"></i> Download .jar
             </div>
@@ -591,11 +593,11 @@
         <div class="install-section">
             <div style="text-align: center; margin-bottom: 55px;">
                 <h2 style="font-size: 2.7rem; font-weight: 800; margin-bottom: 14px;
-                           background: linear-gradient(90deg, #ffffff, #ffaaaa);
+                           background: linear-gradient(90deg, #ffffff, #99ccff);
                            -webkit-background-clip: text; background-clip: text; color: transparent;">
                     How to Install Mods
                 </h2>
-                <p style="color: #ffcccc; font-size: 1.15rem;">
+                <p style="color: #aaccff; font-size: 1.15rem;">
                     Follow these steps to get started with Fabric and enjoy Donut SMP
                 </p>
             </div>
@@ -635,9 +637,9 @@
             </div>
 
             <!-- Discord Support -->
-            <div style="text-align: center; margin-top: 65px; padding-top: 40px; border-top: 1px dashed rgba(255,80,80,0.3);">
-                <p style="color: #ffbbbb; font-size: 1.08rem; margin-bottom: 22px;">
-                    <i class="fab fa-discord" style="color:#ff6666;"></i> Need help with installation?
+            <div style="text-align: center; margin-top: 65px; padding-top: 40px; border-top: 1px dashed rgba(51, 153, 255, 0.3);">
+                <p style="color: #aaccff; font-size: 1.08rem; margin-bottom: 22px;">
+                    <i class="fab fa-discord" style="color:#66ccff;"></i> Need help with installation?
                 </p>
                 <button onclick="openDiscord()" class="discord-btn" style="font-size:1.12rem; padding:17px 50px;">
                     <i class="fab fa-discord"></i> Join Donut SMP Discord
@@ -659,7 +661,7 @@
 </div>
 
 <script>
-// Enhanced Particle System
+// Enhanced Particle System with Blue Theme
 const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
 let width, height, particles = [];
@@ -695,9 +697,9 @@ class Particle {
     draw() {
         ctx.save();
         ctx.globalAlpha = this.opacity;
-        ctx.fillStyle = '#ff6666';
+        ctx.fillStyle = '#66ccff';
         ctx.shadowBlur = 15;
-        ctx.shadowColor = '#ff4444';
+        ctx.shadowColor = '#3399ff';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -714,7 +716,7 @@ function initParticles() {
 }
 
 function animateParticles() {
-    ctx.fillStyle = 'rgba(10, 3, 3, 0.15)';
+    ctx.fillStyle = 'rgba(0, 10, 20, 0.15)';
     ctx.fillRect(0, 0, width, height);
     
     for (let p of particles) {
@@ -737,7 +739,7 @@ animateParticles();
 function simulateDownload(modName) {
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.innerHTML = `🔥 ${modName} — Download started`;
+    toast.innerHTML = `💙 ${modName} — Download started`;
     document.body.appendChild(toast);
 
     setTimeout(() => {
@@ -768,10 +770,10 @@ document.getElementById('discordButton').addEventListener('click', openDiscord);
 // GIF Error Handling
 const heroGif = document.getElementById('heroGif');
 heroGif.onerror = function() {
-    this.src = "https://via.placeholder.com/540x360/330000/ff6666?text=Donut+SMP+Preview";
+    this.src = "https://via.placeholder.com/540x360/002244/66ccff?text=Donut+SMP+Preview";
 };
 
-console.log("%cDonut SMP Red & White Theme Loaded Successfully 🔥", "color:#ff6666; font-weight:bold");
+console.log("%cDonut SMP Blue & White Theme Loaded Successfully 💙", "color:#66ccff; font-weight:bold");
 </script>
 </body>
 </html>
