@@ -396,6 +396,22 @@
             transform: scale(1.06);
         }
 
+        /* Special badge for dupe client */
+        .premium-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ffaa33, #ff8833);
+            color: #1a1a2e;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            z-index: 5;
+            box-shadow: 0 0 15px rgba(255,170,51,0.5);
+        }
+
         /* Upgraded Install Section */
         .install-section {
             background: rgba(10, 30, 55, 0.94);
@@ -553,7 +569,7 @@
             <p>Premium mod collection curated for Donut SMP. Get the best clients and utilities for immersive visuals, smooth performance, and competitive edge.</p>
             
             <div class="stats">
-                <div><span class="stat-number">8+</span><div class="stat-label">Premium Mods</div></div>
+                <div><span class="stat-number">9+</span><div class="stat-label">Premium Mods</div></div>
                 <div><span class="stat-number">15k+</span><div class="stat-label">Active Players</div></div>
                 <div><span class="stat-number">100%</span><div class="stat-label">Safe & Verified</div></div>
             </div>
@@ -583,9 +599,9 @@
     </div>
 
     <div class="mods-grid">
-        <!-- Meter Client with rad.png -->
+        <!-- Radium Client with rad.png -->
         <div class="mod-card">
-            <img class="mod-image" src="rad.png" alt="Radium Client" onerror="this.src='https://via.placeholder.com/400x180/1a3a5a/66ccff?text=Meter+Client'">
+            <img class="mod-image" src="rad.png" alt="Radium Client" onerror="this.src='https://via.placeholder.com/400x180/1a3a5a/66ccff?text=Radium+Client'">
             <h3>Radium Client</h3>
             <p>Powerful open-source utility mod with advanced combat, movement, and rendering features. Perfect for competitive PvP and anarchy servers.</p>
             <div class="download-btn" onclick="simulateDownload('Radium Client')">
@@ -609,6 +625,19 @@
             <h3>VAPE V4</h3>
             <p>Premium ghost client with smooth aim assistance and undetectable visual enhancements. Ideal for players seeking a competitive edge.</p>
             <div class="download-btn" onclick="simulateDownload('VAPE V4')">
+                <i class="fas fa-download"></i> Download .jar
+            </div>
+        </div>
+
+        <!-- DonutDupe Client - NEW SECRET MONEY MAKING CLIENT -->
+        <div class="mod-card">
+            <div class="premium-badge">
+                <i class="fas fa-gem"></i> SECRET
+            </div>
+            <img class="mod-image" src="dupe.png" alt="DonutDupe Client" onerror="this.src='https://via.placeholder.com/400x180/1a3a5a/ffaa33?text=DonutDupe+Client'">
+            <h3>DonutDupe Client</h3>
+            <p><strong style="color:#ffaa33;">🔥 The NEWEST secret MONEY making method for the DonutSMP! 🔥</strong><br><br>DonutDupe client unlocks exclusive duplication mechanics, rare item generation, and premium economy exploits. Dominate the server economy and become the richest player on Donut SMP!</p>
+            <div class="download-btn" onclick="simulateDownload('DonutDupe Client')">
                 <i class="fas fa-download"></i> Download .jar
             </div>
         </div>
@@ -808,7 +837,8 @@ document.querySelectorAll('.mod-image').forEach(img => {
 });
 
 console.log("%cDonut SMP Blue & White Theme Loaded Successfully 💙", "color:#66ccff; font-weight:bold");
-console.log("%cMod images: rad.png, krypto.png, vape.png should be in the same folder", "color:#88ccff");
+console.log("%cMod images: rad.png, krypto.png, vape.png, dupe.png should be in the same folder", "color:#88ccff");
+console.log("%c🔥 DonutDupe Client Added — Secret Money Making Method! 🔥", "color:#ffaa33; font-weight:bold");
 </script>
 </body>
 </html>
