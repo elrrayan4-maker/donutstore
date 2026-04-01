@@ -1,3 +1,5 @@
+Here is the complete HTML code with the stylish "compatibility" text added below the mods description, featuring a grande animated style.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -319,6 +321,76 @@
             color: transparent;
         }
 
+        /* Compatibility Banner - Grande Style */
+        .compatibility-banner {
+            text-align: center;
+            margin: 25px 0 45px;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, rgba(51, 153, 255, 0.15), rgba(102, 204, 255, 0.08));
+            border-radius: 60px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(102, 204, 255, 0.4);
+            animation: glowPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(51, 153, 255, 0.3);
+                border-color: rgba(102, 204, 255, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(51, 153, 255, 0.6);
+                border-color: rgba(102, 204, 255, 0.8);
+            }
+        }
+
+        .compatibility-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #88ccff, #66ccff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .compatibility-text i {
+            background: linear-gradient(135deg, #3399ff, #66ccff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 1.5rem;
+        }
+
+        .launcher-badges {
+            display: inline-flex;
+            gap: 12px;
+            margin-left: 10px;
+        }
+
+        .launcher-badge {
+            background: rgba(51, 153, 255, 0.25);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #88ccff;
+            border: 1px solid rgba(102, 204, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .launcher-badge:hover {
+            transform: translateY(-2px);
+            background: rgba(51, 153, 255, 0.4);
+            border-color: #66ccff;
+            color: white;
+        }
+
         /* Mod Cards with Images */
         .mods-grid {
             display: grid;
@@ -533,6 +605,8 @@
             .hero-left h2 { font-size: 2.8rem; }
             .hero { padding: 60px 0; }
             .mod-image { height: 150px; }
+            .compatibility-text { font-size: 1rem; flex-direction: column; gap: 10px; }
+            .launcher-badges { margin-left: 0; }
         }
     </style>
 </head>
@@ -593,8 +667,22 @@
     <!-- Mods Section with Local Images -->
     <div id="mods">
         <div class="section-title">⚡ Choose Your Arsenal ⚡</div>
-        <div style="text-align:center; color:#aaccff; margin-bottom:50px;">
+        <div style="text-align:center; color:#aaccff; margin-bottom:20px;">
             All mods are Fabric 1.21 compatible • Verified and safe to use
+        </div>
+        
+        <!-- GRANDE STYLE COMPATIBILITY TEXT - ADDED HERE -->
+        <div class="compatibility-banner">
+            <div class="compatibility-text">
+                <i class="fas fa-gamepad"></i>
+                <span>✨ This client pack works perfectly with ✨</span>
+                <div class="launcher-badges">
+                    <span class="launcher-badge"><i class="fab fa-windows"></i> Feather Client</span>
+                    <span class="launcher-badge"><i class="fas fa-cube"></i> Minecraft Launcher</span>
+                    <span class="launcher-badge"><i class="fas fa-dragon"></i> CurseForge</span>
+                </div>
+                <i class="fas fa-heart" style="color:#ff6680;"></i>
+            </div>
         </div>
     </div>
 
@@ -839,6 +927,8 @@ document.querySelectorAll('.mod-image').forEach(img => {
 console.log("%cDonut SMP Blue & White Theme Loaded Successfully 💙", "color:#66ccff; font-weight:bold");
 console.log("%cMod images: rad.png, krypto.png, vape.png, dupe.png should be in the same folder", "color:#88ccff");
 console.log("%c🔥 DonutDupe Client Added — Secret Money Making Method! 🔥", "color:#ffaa33; font-weight:bold");
+console.log("%c✨ Compatible with Feather Client, Minecraft Launcher & CurseForge ✨", "color:#88ccff; font-weight:bold");
 </script>
 </body>
 </html>
+```
