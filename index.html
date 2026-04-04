@@ -1,3 +1,5 @@
+Here is the complete HTML code with local JAR file downloads integrated for each mod client.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -641,7 +643,7 @@
             <p>Premium mod collection curated for Donut SMP. Get the best clients and utilities for immersive visuals, smooth performance, and competitive edge.</p>
             
             <div class="stats">
-                <div><span class="stat-number">9+</span><div class="stat-label">Premium Mods</div></div>
+                <div><span class="stat-number">4+</span><div class="stat-label">Premium Mods</div></div>
                 <div><span class="stat-number">15k+</span><div class="stat-label">Active Players</div></div>
                 <div><span class="stat-number">100%</span><div class="stat-label">Safe & Verified</div></div>
             </div>
@@ -669,49 +671,50 @@
             All mods are Fabric 1.21 compatible • Verified and safe to use
         </div>
         
-        <!-- GRANDE STYLE COMPATIBILITY TEXT - ADDED HERE -->
+        <!-- GRANDE STYLE COMPATIBILITY TEXT -->
         <div class="compatibility-banner">
             <div class="compatibility-text">
-                <span> This client pack works only in </span>
+                <i class="fas fa-gamepad"></i>
+                <span>✨ This client pack works perfectly with ✨</span>
                 <div class="launcher-badges">
-                    <span class="launcher-badge"><i class=></i> Feather Client</span>
-                    <span class="launcher-badge"><i class=></i> Minecraft Launcher</span>
-                    <span class="launcher-badge"><i class=></i> CurseForge</span>
+                    <span class="launcher-badge"><i class="fab fa-feather"></i> Feather Client</span>
+                    <span class="launcher-badge"><i class="fas fa-cube"></i> Minecraft Launcher</span>
+                    <span class="launcher-badge"><i class="fas fa-dragon"></i> CurseForge</span>
                 </div>
-                <i class="fas fa-heart" style="color:#0830fc;"></i>
+                <i class="fas fa-heart" style="color:#66ccff;"></i>
             </div>
         </div>
     </div>
 
     <div class="mods-grid">
-        <!-- Radium Client with rad.png -->
+        <!-- Radium Client with rad.png and local JAR download -->
         <div class="mod-card">
             <img class="mod-image" src="rad.png" alt="Radium Client" onerror="this.src='https://via.placeholder.com/400x180/1a3a5a/66ccff?text=Radium+Client'">
             <h3>Radium Client</h3>
             <p>Powerful open-source utility mod with advanced combat, movement, and rendering features. Perfect for competitive PvP and anarchy servers.</p>
-            <div class="download-btn" onclick="simulateDownload('Radium Client')">
-                <i class="fas fa-download"></i> Download .jar
-            </div>
+            <a href="RadiumClient.jar" class="download-btn" download>
+                <i class="fas fa-download"></i> Download RadiumClient.jar
+            </a>
         </div>
 
-        <!-- Krypton Client with krypto.png -->
+        <!-- Krypton Client with krypto.png and local JAR download -->
         <div class="mod-card">
             <img class="mod-image" src="krypto.png" alt="Krypton Client" onerror="this.src='https://via.placeholder.com/400x180/1a3a5a/66ccff?text=Krypton+Client'">
             <h3>Krypton Client</h3>
-            <p>Lightweight performance KryptoClient mod focused on maximum FPS, stability, and smooth gameplay. Features dynamic render distance and memory optimization.</p>
-            <div class="download-btn" onclick="simulateDownload('Krypton Client')">
-                <i class="fas fa-download"></i> Download .jar
-            </div>
+            <p>Lightweight performance mod focused on maximum FPS, stability, and smooth gameplay. Features dynamic render distance and memory optimization.</p>
+            <a href="KryptonClient.jar" class="download-btn" download>
+                <i class="fas fa-download"></i> Download KryptonClient.jar
+            </a>
         </div>
 
-        <!-- VAPE V4 with vape.png -->
+        <!-- VAPE V4 with vape.png and local JAR download -->
         <div class="mod-card">
             <img class="mod-image" src="vape.png" alt="VAPE V4" onerror="this.src='https://via.placeholder.com/400x180/1a3a5a/66ccff?text=VAPE+V4'">
             <h3>VAPE V4</h3>
-            <p>Premium VAPE client with smooth aim assistance and undetectable visual enhancements. Ideal for players seeking a competitive edge.</p>
-            <div class="download-btn" onclick="simulateDownload('VAPE V4')">
-                <i class="fas fa-download"></i> Download .jar
-            </div>
+            <p>Premium ghost client with smooth aim assistance and undetectable visual enhancements. Ideal for players seeking a competitive edge.</p>
+            <a href="VAPEV4.jar" class="download-btn" download>
+                <i class="fas fa-download"></i> Download VAPEV4.jar
+            </a>
         </div>
 
         <!-- DonutDupe Client - NEW SECRET MONEY MAKING CLIENT -->
@@ -722,9 +725,9 @@
             <img class="mod-image" src="dupe.png" alt="DonutDupe Client" onerror="this.src='https://via.placeholder.com/400x180/1a3a5a/ffaa33?text=DonutDupe+Client'">
             <h3>DonutDupe Client</h3>
             <p><strong style="color:#ffaa33;">🔥 The NEWEST secret MONEY making method for the DonutSMP! 🔥</strong><br><br>DonutDupe client unlocks exclusive duplication mechanics, rare item generation, and premium economy exploits. Dominate the server economy and become the richest player on Donut SMP!</p>
-            <div class="download-btn" onclick="simulateDownload('DonutDupe Client')">
-                <i class="fas fa-download"></i> Download .jar
-            </div>
+            <a href="DonutDupeClient.jar" class="download-btn" download>
+                <i class="fas fa-download"></i> Download DonutDupeClient.jar
+            </a>
         </div>
     </div>
 
@@ -875,21 +878,6 @@ resizeCanvas();
 initParticles();
 animateParticles();
 
-// Simulate Download Toast
-function simulateDownload(modName) {
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerHTML = `💙 ${modName} — Download started`;
-    document.body.appendChild(toast);
-
-    setTimeout(() => {
-        toast.style.transition = 'all 0.4s ease';
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateY(40px)';
-        setTimeout(() => toast.remove(), 500);
-    }, 3200);
-}
-
 // Scroll to Install
 function scrollToInstall() {
     document.getElementById('install').scrollIntoView({ behavior: 'smooth' });
@@ -902,7 +890,17 @@ function openDiscord() {
 
 // Event Listeners
 document.getElementById('mainDownloadBtn').addEventListener('click', () => {
-    simulateDownload('Donut SMP Mod Collection');
+    // Simulate a toast message for the bundle
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `💙 Donut SMP Mod Collection — All mods are ready for download below`;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+        toast.style.transition = 'all 0.4s ease';
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(40px)';
+        setTimeout(() => toast.remove(), 500);
+    }, 3200);
 });
 
 document.getElementById('discordButton').addEventListener('click', openDiscord);
@@ -921,9 +919,28 @@ document.querySelectorAll('.mod-image').forEach(img => {
     };
 });
 
+// Download tracking with toast
+document.querySelectorAll('.download-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        const fileName = this.getAttribute('download');
+        if (fileName) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `💙 Download started: ${fileName}`;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.transition = 'all 0.4s ease';
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(40px)';
+                setTimeout(() => toast.remove(), 500);
+            }, 3000);
+        }
+    });
+});
+
 console.log("%cDonut SMP Blue & White Theme Loaded Successfully 💙", "color:#66ccff; font-weight:bold");
-console.log("%cMod images: rad.png, krypto.png, vape.png, dupe.png should be in the same folder", "color:#88ccff");
-console.log("%c🔥 DonutDupe Client Added — Secret Money Making Method! 🔥", "color:#ffaa33; font-weight:bold");
+console.log("%cLocal JAR files required: RadiumClient.jar, KryptonClient.jar, VAPEV4.jar, DonutDupeClient.jar", "color:#88ccff; font-weight:bold");
+console.log("%cImage files: rad.png, krypto.png, vape.png, dupe.png", "color:#88ccff");
 console.log("%c✨ Compatible with Feather Client, Minecraft Launcher & CurseForge ✨", "color:#88ccff; font-weight:bold");
 </script>
 </body>
